@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>SMACSS Your Sass Up | Mina Markham</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <script src="//use.typekit.net/ajl7uxy.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/mina.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/monokai_sublime.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+
+        <!-- 0. all the meta things -->
+        <section>
+
+          <section data-background="img/convergese.jpg" data-state="reverse"></section>
+          <!-- <section data-background="img/fluent.jpg" data-state="reverse"></section> -->
+          <section data-background="gifs/snape-smack.gif" data-state="reverse">
+            <div class="fragment">
+              <h1><span class="title-left">SMACSS<br>Your</span> <span class="title-right">Up</span></h1>
+              <img class="sassy-logo" src="img/logo-sass.png"/>
+            </div>
+          </section>
+
+          <section data-background="img/bg-me.jpg">
+            <h2 style="font-size:2em;">@minamarkham</h2>
+            <aside class="notes">Hi! I’m Mina. That’s my handle on Twitter and pretty much everywhere else. I’m a front-end developer. [next]</aside>
+          </section>
+
+          <section data-background="img/ibm-design.jpg" data-state="reverse"></section>
+          <section data-background="img/front-porch.jpg" data-state="reverse"></section>
+          <section data-background="img/gdi.jpg" data-state="reverse">
+            <aside class="notes">I recently started the Dallas chapter of Girl Develop It, which is an awesome organization that strives to bridge the gender gap in the tech industry. Always looking for students, teachers, and sponsors, so come find me. [next]</aside>
+          </section>
+          <section data-background="gifs/omg-cupcakes.gif" data-state="reverse">
+<!--             <div class="right fragment">
+              <img src="img/cupcake-with-toppings.png" width="300" alt="">
+            </div> -->
+            <aside class="notes">I’m also a big fan of cupcakes. </aside>
+          </section>
+        </section>
+
+        <!-- 1. the backstory -->
+        <section>
+
+          <section data-background="img/office-boss.jpg" data-state="reverse">
+            <p class="big center fragment">&#8220;I need two demo sites.&#8221;</p>
+            <p class="big center fragment">&#8220;And I need them in two days.&#8221;</p>
+            <aside class="notes">The reason I went down this road of modular CSS has to do with having one too many conversations with my boss that went like this: What’s the problem? It’s just changing some CSS. CSS is easy.</aside>
+          </section>
+          <section data-background="gifs/screaming-internally.gif" data-state="reverse"></section>
+          <section>
+            <h2>CSS is easy.</h2>
+            <aside class="notes">I hear this a lot. Developers used to trample over the HTML and CSS, largely qualifying their actions as "HTML and CSS are so easy, any of us can write it.” Who here thinks CSS is easy? If so, get out! :)</aside>
+          </section>
+          <section>
+            <h2>CSS is <del>easy</del> hard.</h2>
+            <aside class="notes">CSS is easy to write, but not easy to write well.  The truth is, CSS is hard. </aside>
+          </section>
+          <section data-background="" data-background-color="#e6e6e6">
+            <img src="img/tweet-css-hell.jpg" alt="" />
+            <aside class="notes">Like really hard.</aside>
+          </section>
+          <section data-background="" data-background-color="#e6e6e6">
+            <img src="img/tweet-css-center.jpg" alt="" />
+          </section>
+          <section data-background="" data-background-color="#e6e6e6">
+            <img src="img/tweet-css-tears.jpg" alt="" />
+          </section>
+          <section data-state="css-blinds reverse">
+            <aside class="notes">There’s all these classes and IDs and tags and god help you if you forget a semicolon and it looks one way in Chrome and another way in Firefox and IE’s all fuck you and why the hell won’t this style and you know what screw IT just USE !important!</aside>
+          </section>
+          <section>
+            <h2>CSS is bullshit.</h2>
+            <aside class="notes">You know what? CSS is bullshit. There has to be a better way.</aside>
+          </section>
+        </section>
+
+        <!-- 2. on modular css -->
+        <section>
+          <section>
+            <h2>Modular CSS</h2>
+            <aside class="notes">The purpose of modularizing our CSS is to help it become much more flexible and scalable, but also to help make it easier to read and easier to maintain.</aside>
+          </section>
+
+          <section>
+            <blockquote>Focusing on creating healthy front-end modules instead of complete pages can help break complex page layouts into reusable solutions.</blockquote>
+            <cite>&mdash; Dave Rupert</cite>
+            <aside class="notes">Dave Rupert says it best when he says that we should focus on creating front-end modules as reusable solutions for complex pages.</aside>
+          </section>
+
+          <section data-background="img/module-apple.jpg">
+            <aside class="notes">This isn’t the “homepage” of Apple.</aside>
+          </section>
+
+          <section data-background="img/module-apple-2.jpg">
+            <aside class="notes">It's a complex page fit together with front-end modules. It's a collection of reusable style patterns.</aside>
+          </section>
+
+          <section>
+            <p class="big center">small pieces<br>independent<br>portable</p>
+            <aside class="notes">Modular CSS is all about learning to think about your CSS in terms of individual pieces. Each Module should be designed to exist as a standalone component. In doing so, the page will be more flexible. If done right, Modules can easily be moved to different parts of the layout without breaking. Breaking your CSS down into smaller chunks will ultimately result in more maintainable code.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Navigation, Tabs, Tables, Accordions, Lists, Dropdowns<br>Pagination, Buttons, Labels, Inputs, Breadcrumbs, etc.</p>
+            <aside class="notes">Examples of reusable pieces are [read slide] If this seems familiar, it should…</aside>
+          </section>
+
+          <section>
+            <h2>Tiny Bootstraps</h2>
+            <aside class="notes">Dave Rupert refers to these reusable modules as tiny bootstraps.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Module, Pattern, Component, etc.</p>
+            <aside class="notes">BTW, I will use the words module, pattern, and component interchangeably; they all refer to a set of self-contained styles.</aside>
+          </section>
+
+          <section>
+            <p class="big center">MVCSS, BEM, OOCSS, Suit, intuit.css</p>
+            <aside class="notes">There are lots of different methodologies that can help you accomplish this. But the one I use and love is [next]</aside>
+          </section>
+        </section>
+
+        <!-- 3. smacss -->
+        <section>
+
+          <section>
+            <h2>SMACSS</h2>
+            <aside class="notes"></aside>
+          </section>
+
+          <section>
+            <h2 style="font-size:2em;">Scalable &amp; Modular Architecture for CSS</h2>
+            <aside class="notes">SMACSS stands for Scalable and Modular Architecture for CSS.</aside>
+          </section>
+
+          <section data-background="img/snook.jpg" data-state="reverse">
+            <aside class="notes">It was created by Jonathan Snook of Shopify. The SMACSS core goals are to increase the semantic value of a section of HTML and content while decreasing the expectation of a specific HTML structure [next]</aside>
+          </section>
+
+          <section>
+            <h2><del>Framework</del></h2>
+            <aside class="notes">It is not a framework, but an approach to authoring stylesheets. It doesn’t force you to do thins certain way, and it doesn’t have any dependencies. If you don’t like the way something is done, change it or leave it out. [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center">categorization<br>naming conventions<br>depth of applicability</p>
+            <aside class="notes">SMACSS has three basic principles: categorization, naming conventions, and depth of applicability (which is really hard to say).</aside>
+          </section>
+        </section>
+
+        <!-- 4. categorization -->
+        <section>
+          <section data-background="img/categories.jpg" data-state="reverse">
+            <h2>Categorization</h2>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories:</aside>
+          </section>
+
+          <section>
+            <ul class="big">
+              <li class="fragment">base</li>
+              <li class="fragment">layout</li>
+              <li class="fragment">modules</li>
+              <li class="fragment">states</li>
+              <li class="fragment">themes</li>
+            </ul>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories: Base, layout, modules, states &amp; themes.  Each category comes with a set of more or less loosely defined naming conventions and usage rules. [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center">Base<br>CSS resets, default styles<br>(ex. html, body, h1, ul, etc)</p>
+            <aside class="notes">Base rules are the defaults. They are almost exclusively single ele- ment selectors but it could include attribute selectors, pseudo-class selectors, child selectors or sibling selectors. Essentially, a base style says that wherever this element is on the page, it should look like this.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Layout<br>grid, major components<br>ex. header, sidebar, nav</p>
+            <aside class="notes">Layout rules divide the page into sections. Layouts hold one or more modules together.Wrappers, rows, columns and any grid-based styles can go here. Also major semantic areas as well, such as header, content and footer. - When defining a layout rule make sure you don’t mix presentation rules such as fonts, colors, backgrounds or borders. - Layout rules should only contain box-model properties like margins, padding, positioning, width, height, etc.,</aside>
+          </section>
+
+          <section data-background="img/module-apple-3.jpg">
+            <aside class="notes">Let’s look go back to Apple. A quick analysis of the home page, you can see some defined areas.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Modules<br>content patterns<br>(ex. search-box, navigation, content-box)</p>
+            <aside class="notes">Modules are the reusable, modular parts of our design. They are the callouts, the sidebar sections, the product lists and so on.</aside>
+          </section>
+
+          <section data-background="img/module-apple-4.jpg">
+            <aside class="notes">The amount of abstraction you use is up to you, but the point is to break you layout down in to as many reusable components as possible.</aside>
+          </section>
+
+          <section>
+            <p class="big center">States<br>module in various states</p>
+            <aside class="notes">State rules are ways to describe how our modules or layouts will look when in a particular state. Is it hidden or expanded? Is it active or inactive? How does it look on different devices? I like to add print styles into this category as well.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Themes<br>module in various contexts</p>
+            <aside class="notes">Theme Rules describe the appearance of modules, i.e., colors, images, etc, by way of visual themes. I’ve never needed to use them, but some context examples might be: user-selected skin for an application, client branding for a hosted site, holiday or seasonal themes.</aside>
+          </section>
+
+          <section data-background="img/hische-theme.jpg" data-state="reverse"></section>
+        </section>
+
+        <!-- 5. naming conventions -->
+        <section>
+          <section data-background="img/scrabble-letters.jpg" data-state="reverse">
+            <h2>Naming Conventions</h2>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories:</aside>
+          </section>
+
+          <section>
+            <p class="big center">Base<br>h1, h2, p, a, etc.</p>
+            <aside class="notes">HTML element selectors</aside>
+          </section>
+
+          <section>
+            <p class="big center">Layout<br>.layout-*, .l-*</p>
+            <aside class="notes">All selectors in this category should be prefixed with .layout- (e.g. .layout-header, .layout-sidebar).</aside>
+          </section>
+
+          <section>
+            <p class="big center">Module<br>.&lt;name&gt;</p>
+            <aside class="notes">These will vary based on what the project needs, so just try to name them something that’s abstract enough to use elsewhere, but still descriptive of the object.</aside>
+          </section>
+
+          <section>
+            <p class="big center">Module<br>.button</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section>
+            <p class="big center">Sub-module<br>.&lt;name&gt;-&lt;state&gt;</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section>
+            <p class="big center">Sub-module<br>.button-secondary</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section>
+            <p class="big center">State<br>.is-*</p>
+            <aside class="notes">State rules are prefixed with “is-”, followed by a name to describe its state of being. Some example names would be “active”, “collapsed”, or “hidden”. So, the namespace makes a statement as if to say, “This <element>‘is-active’.”</aside>
+          </section>
+
+          <section>
+            <p class="big center">Theme<br>.theme-*</p>
+            <aside class="notes">Jonathan suggests using .theme- for namespacing, but I’m going to disagree with him.</aside>
+          </section>
+
+          <section>
+            <p class="big center"><del>Theme<br>.theme-*</del></p>
+            <aside class="notes">Sass makes theming much simpler, so we’ll forget about that one for now.</aside>
+          </section>
+        </section>
+
+        <!-- 6. depth of applicability -->
+        <section>
+          <section data-background="img/hole-depth.jpg" data-state="reverse">
+            <h2>Depth of Applicability</h2>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories:</aside>
+          </section>
+
+          <section>
+            <code>header#top-menu > nav > ul > li a + div > ul > li > ul li:hover > a {…}</code>
+            <aside class="notes">Looking at this I bet you know exactly what the HTML looks like.</aside>
+          </section>
+
+          <section>
+            <img src="img/deep-selector.jpg">
+            <aside class="notes">Each time your go deeper into the markup, you add a generation. This selector effects 10 generations.</aside>
+          </section>
+
+          <section>
+            <code>header#top-menu > nav > ul > li a + div > ul > li > ul li:hover > a {…}</code>
+            <aside class="notes">This is not a module. This is a maintenance nightmare. If anything about the HTML changes, you’re going to have problems. Full disclosure: this is from a dropdown menu I made before I knew any better. Please don’t judge me. There’s no need to use such a specific selector… [next]</aside>
+          </section>
+
+          <section>
+            <code><span class="grayed">header#top-menu > nav > ul > li a + div > ul > li > ul li:hover ></span> a <span class="grayed">{…}</span></code>
+            <aside class="notes">…when this is really what we care about.</aside>
+          </section>
+
+          <section>
+            <code>.nav-subitem</code>
+            <aside class="notes">Instead, use a single class to name the module or submodule. [pause] [next]</aside>
+          </section>
+
+          <section>
+            <code>.nav-subitem > a</code>
+            <aside class="notes">Or even this. Child selectors are great when used sparingly within modules. Sure, this still relies on a certain HTML structure, but it’s very shallow, and will most likely be portable. And it’s a great way to avoid classitis in your markup.</aside>
+          </section>
+
+          <section>
+            <p class="big center">naming conventions<br>class selectors<br>child selectors</p>
+            <aside class="notes">Use child selectors — to limit the scope of selectors to direct descendants instead of all descendants
+            Use class selectors — to reduce the need for descendant selectors of any kind
+            Use naming conventions — for more for readable code</aside>
+          </section>
+          
+          <section>
+            <h2>Recap</h2>
+          </section>
+
+          <section>
+            <p class="big center">categorize css rules<br>meaningful names<br>shallow selectors</p>
+            <aside class="notes">To recap what SMACSS is:</aside>
+          </section>
+        </section>
+
+        <!-- 7. let's get sassy -->
+        <section>
+          <section data-background="gifs/sassy-girl.gif" data-state="reverse"></section>
+        </section>
+
+        <!-- 8. namespacing -->
+        <section>
+          <section data-background="img/namespacing.jpg" data-state="reverse">
+            <h2>Namespacing</h2>
+            <aside class="notes">The first way Sass can optimize SMACSS is through namespacing. [next]</aside>
+          </section>
+
+          <section data-background="img/ampersand.jpg" data-state="reverse">
+            <aside class="notes">The ampersand operator is essential in streamlining namespacing in Sass. Basically the ampersand is a way to merge selectors. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn {
+  &amp;:hover {…}
+}</code></pre>
+            <aside class="notes">The parent element takes the place of the ampersand. The most common use of this was for pseudo classes such as :hover, :before and :after. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn:hover {…}</code></pre>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn {
+    form & {…}
+}</code></pre>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>form .btn {…}</code></pre>
+            <aside class="notes">This is good, but it’s not ideal for modular css and naming conventions. [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center">&amp;- or &amp;_</p>
+            <aside class="notes">Before Sass 3.3, you could only use ampersands in these ways. But now you can now write &-suffix (or &_suffix, or even &suffix if you really want) and Sass will make it work. This is perfect for namespacing your selectors. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn {
+    &-secondary {…}
+    &_secondary {…}
+}</code></pre>
+            <aside class="notes">Now you can nest your submodules in your main module… [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn-secondary {…}
+.btn_secondary {…}</code></pre>
+            <aside class="notes">…and it will compile to the naming conventions I went over earlier. [pause] [next]</aside>
+          </section>
+        </section>
+
+        <!-- 9. nesting -->
+        <section>
+          <section data-background="img/nesting.jpg" data-state="reverse">
+            <h2>Nesting</h2>
+          </section>
+
+          <section data-background="gifs/inception.gif" data-state="reverse">
+            <h2 class="fragment">Inception Rule</h2>
+            <h2 class="fragment">&lt; 3 levels deep</h2>
+            <aside class="notes">Speaking of nesting, it’s generally considered bad form to nest too deeply in Sass, since it can result in the nightmare selector I showed you before. [next] The general rule is not to go more than three level deep. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn {
+    &-secondary {
+        &-icon {…}
+    }
+}</code></pre>
+            <aside class="notes">But which the recent changes in how the ampersand gets parsed, you can nest as much as you please and not have to worry too much about deep selector chains. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn-secondary {…}
+.btn-secondary-icon {…}</code></pre>
+            <aside class="notes">But which the recent changes in how the ampersand gets parsed, you can nest as much as you please and not have to worry too much about longer selectors. [next]</aside>
+          </section>
+        </section>
+
+        <!-- 10. extending-->
+        <section>
+          <section data-background="img/inheritance.jpg" data-state="reverse">
+            <h2>Selector Inheritance</h2>
+          </section>
+          <section data-state="full-code reverse">
+            <pre><code>.btn {…}
+.btn-large {…}
+
+&lt;div class='btn btn-large'&gt;</code></pre>
+            <aside class="notes">With the SMACSS methodology, you should always add styles to selectors, and not undo them. One side-effects of this is the need to use multiple classes in your HTML, which can get out of hand quickly. I like squeaky clean HTML, so I try to use as well classes as possible. One solution is to… [next]</aside>
+          </section>
+
+          <section data-background="img/all-things-yay.jpg">
+            <p class="extrabold">@extend<br>all the<br>things!</p>
+            <aside class="notes">Fortunately, using Sass @extend can solve this. [next]</aside>
+          </section>
+          
+          <section data-state="full-code reverse">
+            <pre><code>.btn {…}
+.btn-large {@extend .btn;}
+
+&lt;div class='btn-large'&gt;</code></pre>
+            <aside class="notes">Extending primary modules into submodules utilizes Sass’s selector inheritance, allowing submodules to inherit the properties of the parent selector. The result selectors with common styles are grouped together, and unique properties are outputted separately. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>%btn {…}
+.btn-large {@extend %btn;}
+
+&lt;div class='btn-large'&gt;</code></pre>
+            <aside class="notes">Alternatively, you can use placeholder selectors for your primary modules and extend them within the submodules, which would reduce the number of overall selectors in your CSS output. The primary selector isn’t complied, instead its properties are included in all the submodules. This might not work if you need to style primary modules separately from submodules. [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center">don’t @extend between modules</p>
+            <aside class="notes">Like many things with Sass, don’t overdo it. Limit your extends to inside individual modules, otherwise they’ll become overly dependent on either, which limits their portability. [pause] [next]</aside>
+          </section>
+        </section>
+
+        <!-- 11. file structure -->
+        <section>
+          <section data-background="img/file-structure.jpg" data-state="reverse">
+            <h2>File Structure</h2>
+            <aside class="notes">In Sass you can easily chop your stylesheet into partials by using the @import rule. This allows us to easily organize and maintain our files similar like this: [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center">@import</p>
+            <aside class="notes">In Sass you can easily chop your stylesheet into partials by using the @import rule. This allows us to easily organize and maintain our files similar like this: [read slide] [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>01. Utilities</h4>
+            <hr>
+            <p><code>utilities/_index.scss</code></p>
+              <pre><code>@import 'global';
+@import 'functions';
+@import 'mixins';
+@import 'helpers';</code></pre>
+              <p>Variables, mixins, functions, etc. Basically anything that doesn’t output CSS by itself.</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>02. Libraries</h4>
+            <hr>
+            <p><code>utilities/_lib.scss</code></p>
+              <pre><code>@import "lib/susy";
+@import "lib/font-awesome";
+@import "lib/pesticide";</code></pre>
+              <p>Third-party libraries such as Susy, Font Awesome, Pesticide, and other plugins.</p>
+            <aside class="notes">For JS plugins that require CSS files, just change the extension to .scss and import it into your stylesheet.</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>03. Base</h4>
+            <hr>
+            <p><code>base/_index.scss</code></p>
+              <pre><code>@import ‘normalize';
+@import 'base';</code></pre>
+              <p>CSS resets, Normalize, element styles</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>04. Layout</h4>
+            <hr>
+            <p><code>layout/_index.scss</code></p>
+              <pre><code>@import 'header';
+@import 'footer';
+@import 'sidebar';</code></pre>
+              <p>Grid styles, major layout components (e.g. header, footer, sidebar, etc)</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>05. Modules</h4>
+            <hr>
+            <p><code>modules/_index.scss</code></p>
+              <pre><code>@import 'btn';
+@import 'table';
+@import 'nav';</code></pre>
+              <p>Individual modules, such as buttons, navigation, menus, etc.</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>06. States</h4>
+            <hr>
+            <p><code>states/_index.scss</code></p>
+              <pre><code>@import 'states';
+@import 'touch';</code></pre>
+              <p>Describe states of being, ex: active, collapsed or hidden</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>07. @font-face</h4>
+            <hr>
+            <p><code>utilities/_fonts.scss</code></p>
+              <p>Web fonts imports &amp; declarations</p>
+            <aside class="notes">If you’re hosting web fonts on your own server, this is where you would define those fonts. [next]</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>08. Print</h4>
+            <hr>
+            <p><code>states/_print.scss</code></p>
+              <p>Print styles</p>
+            <aside class="notes">Because I consider print to be a different state, I placed it under the state folder. However, I don’t want to include print styles until the towards the end of my stylesheet. If you like, you can even omit this partial and create a separate print css file. [pause]
+
+We all know that, no matter how hard we may try, sometimes we do need to use quick fixes, hacks and questionable techniques in our code. It happens, whether we like to admit it or not. While this isn’t ideal, we have to do it from time to time; all of us. [next]</aside>
+          </section>
+
+          <section>
+            <p class="big center" style="color: red;">!important</p>
+            <aside class="notes"></aside>
+          </section>
+
+          <section data-background="gifs/cone-shame.gif" data-state="reverse">
+            <aside class="notes">And when we do, we feel shame. The real problem, though, is that we rarely go back and tidy these things up. They slip through the cracks, get ignored, go unnoticed, and stay for good. This we do not have to do. What is needed is a way of allowing these hacks when necessary, but making sure that they don’t go unnoticed and unresolved.</aside>
+          </section>
+
+          <section>
+            <p class="big center">shame.css</p>
+            <aside class="notes">Enter shame.css.</aside>
+          </section>
+
+          <section>
+            <p class="big center"><span class="highlight">_</span>shame.<span class="highlight">s</span>css</p>
+            <aside class="notes">Use a separate file to hide all our shameful hacks.
+
+Because Harry Roberts is the man.
+http://csswizardry.com/2013/04/shame-css/</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <h4>09. Shame</h4>
+            <hr>
+            <p><code>_shame.scss</code></p>
+              <p>because hacks happen</p>
+            <aside class="notes">Create a partial and import it at the end of your main Sass file. Do not leave it there. Go back and refactor when you have the time.</aside>
+          </section>
+
+          <section data-background="img/file-structure-2.jpg">
+            <h2>Small &amp; Readable</h2>
+            <aside class="notes">I know it’s a lot of files, but the idea is to keep everything small and readable. [next]</aside>
+          </section>
+
+          <section data-background="img/grey-prism.png">
+            <br/><br/><br/>
+            <h3>Sassy Starter</h3>
+            <a href="#">&#10148; minamarkham.github.io/sassy-starter</a>
+            <aside class="notes">I’ve shared my Sass boilerplate on GitHub for you to peruse and use at your pleasure. [pause] [next]</aside>
+          </section>
+        </section>
+
+        <!-- 12. theming -->
+        <section>
+          <section data-background="img/theming.jpg" data-state="reverse">
+            <h2>Theming</h2>
+            <aside class="notes">when using SASS, theming can easily be handled by defining variables for the style properties that you want to be themeable (e.g. $border-color).</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>@mixin theme($name) {
+  @if $theme == $name {
+     @content; } }</code></pre>
+            <aside class="notes">First, create use a mixing with nested if statements you can use to define theme styles within your modules.</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>$theme: rebeccapurple</code></pre>
+            <aside class="notes">Then, declare a variable for the theme you want to create.</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>@include theme($rebeccapurple)</code></pre>
+            <aside class="notes">Lastly, include the mixin with the defined variable in your module. </aside>
+          </section>
+
+          <section>
+            <p class="big center">*Disclaimer</p>
+            <aside class="notes">This doesn’t quite work as I’d like to to yet, as it still outputs the default styles as well. </aside>
+          </section>
+
+        </section>
+
+        <!-- 13. refactoring-->
+        <section>
+          <section data-background="gifs/aint-nobody-got.gif" data-state="reverse">
+            <aside class="notes">You may be saying, this all sounds nice, but I’m don’t have time to completely redo my code. </aside>
+          </section>
+          <section data-background="img/all-things-yay.jpg">
+            <p class="extrabold">refactor<br>all the<br>things!</p>
+            <aside class="notes">Solution: refactor. [next]</aside>
+          </section>
+          <section data-background="gifs/so-much-css.gif" data-state="reverse">
+            <aside class="notes">But sometimes, you have a huge legacy project that spans dozens of files and oh my god how am I supposed to tackle all of this?</aside>
+          </section>
+          <section data-background="img/all-things-sad.jpg">
+            <p class="extrabold">refactor<br><span class="highlight">all</span> the<br>things?</p>
+            <aside class="notes">Do I really need to refactor?</aside>
+          </section>
+          <section data-background="img/baby-steps.jpg" data-state="reverse">
+            <h2>Baby Steps</h2>
+            <aside class="notes">Just take it slow. Define a single module in your site, such as the navigation, and refactor that. Then do something else, and so on.</aside>
+          </section>
+          <section>
+            <p class="big center">extract components<br>create variables<br>apply naming conventions<br>nest and @extend</p>
+            <aside class="notes">To start refactoring [read slide] [next]</aside>
+          </section>
+          <section>
+            <img src="img/smacss-menu.jpg">
+            <p>mina.so/smacss-menu</p>
+            <aside class="notes">Remember that awful code before? To see the before and after refactoring, visit this url. [next]</aside>
+          </section>
+          <section>
+            <p class="big center">Before: 161 lines<br>After: 97 lines</p>
+            <aside class="notes">Refactoring that one module saved 64 lines of CSS. That’s just one component! [next]</aside>
+          </section>
+        </section>
+
+        <!-- 14. recap -->
+        <section>
+          <section>
+            <h2>Recap</h2>
+            <aside class="notes"></aside>
+          </section>
+          <section>
+            <p class="big center">namespace with ampersands &amp; @extends<br>break modules into partials<br>refactor in chunks</p>
+            <aside class="notes">[read slide] [next]</aside>
+          </section>
+        </section>
+
+        <!-- 15. resources and tools -->
+<!--         <section>
+
+          <section>
+            <h2>Resources</h2>
+          </section>
+
+          <section data-background="img/resource-sass.jpg">
+            <br/><br/><br/>
+            <h3>Official Sass Site</h3>
+            <a href="http://sass-lang.com/">&#10148; sass-lang.com/</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/resource-smacss.jpg" data-state="reverse">
+            <br/><br/><br/>
+            <h3>SMACSS</h3>
+            <a href="http://smacss.com">&#10148; smacss.com</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/tools-sassmeister.png">
+            <br/><br/><br/>
+            <h3>Sassmeister</h3>
+            <a href="http://sassmeister.com">&#10148; sassmeister.com</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/library-bourbon.jpg" data-state="reverse">
+            <br/><br/><br/>
+            <h3>Bourbon</h3>
+            <a href="http://bourbon.io/">&#10148; bourbon.io/</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/library-compass.jpg" data-state="reverse">
+            <br/><br/><br/>
+            <h3>Compass</h3>
+            <a href="http://compass-style.org">&#10148; compass-style.org</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/library-director.png">
+            <br/><br/><br/>
+            <h3>Sass Director</h3>
+            <a href="http://sassdirector.com">&#10148; sassdirector.com</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/library-sache.jpg">
+            <br/><br/><br/>
+            <h3>Sache</h3>
+            <a href="http://sache.in/">&#10148; sache.in</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/library-susy.jpg" >
+            <br/><br/><br/>
+            <h3>Susy</h3>
+            <a href="http://susy.oddbird.net">&#10148; susy.oddbird.net</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/tools-sublime.png" data-state="reverse">
+            <br/><br/><br/>
+            <h3>ColorHighlighter</h3>
+            <a href="https://packagecontrol.io/packages/Color%20Highlighter">&#10148; packagecontrol.io/packages/Color Highlighter</a>
+            <aside class="notes"></aside>
+          </section>
+          <section data-background="img/resource-sassdocs.jpg" data-state="reverse">
+            <br/><br/><br/>
+            <h3>SassDoc</h3>
+            <a href="http://sassdoc.com/">&#10148; http://sassdoc.com/</a>
+            <aside class="notes"></aside>
+          </section>
+        </section> -->
+
+        <!-- 16. wrap it up -->
+        <section>
+          <section>
+            <h2>Wrap Up</h2>
+          </section>
+
+          <section data-background="img/elyse-derp.jpg" data-state="reverse">
+            <p class="big center"><br><br><br>(We) have no idea<br>what (we’re) doing</p>
+            <aside class="notes">Because as Elyse said, I have no idea what I’m doing. BTW: my tiger is JavaScript. So if you can help holla at your girl. [next]</aside>
+          </section>
+
+          <section data-background="gifs/mmm-cupcakes.gif" data-state="reverse"></section>
+
+          <section data-background="gifs/kaylee-umbrella.gif" data-state="reverse">
+            <br><br>
+            <h3>Thank you!</h3>
+            <aside class="notes">Here are the slides. Thanks for listening!</aside>
+          </section>
+        </section>
+
+      </div><!-- end .slides -->
+
+      <footer class="content-info" role="contentinfo">
+        <p class="copyright">@MinaMarkham for <span class="js-event-name"></span>, <span class="js-event-date"></span></p>
+      </footer>
+
+    </div><!-- end .reveal -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/jquery.magicmove.js"></script>
+
+    <script>
+
+      // Set "Temporary" Event Info
+      var eventName = "#ConvergeSE";
+      var eventDate = "April 16, 2015";
+      var hashTag   = null; // "#FrontPorchIO";
+      var sponsor   = null; // 'IBM Design';
+      var wifi_name = null; // 'LeWifi';
+      var wifi_pass = null; // "Password";
+
+      if (eventName) { $('.js-event-name').text(eventName).parent().show(); }
+      if (eventDate) { $('.js-event-date').text(eventDate).parent().show(); }
+      if (hashTag)   { $('.js-hashtag').text(hashTag).parent().show(); }
+      if (sponsor)   { $('.js-sponsor-name').text(sponsor).parent().show(); }
+      if (wifi_name) { $('.js-wifi-name').text(wifi_name).parent().show(); }
+      if (wifi_pass) { $('.js-wifi-pass').text(wifi_pass).parent().show(); }
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
