@@ -46,8 +46,7 @@
         <!-- 0. all the meta things -->
         <section>
 
-          <section data-background="img/convergese.jpg" data-state="reverse"></section>
-          <!-- <section data-background="img/fluent.jpg" data-state="reverse"></section> -->
+          <section data-background="img/fluent.jpg" data-state="reverse"></section>
           <section data-background="gifs/snape-smack.gif" data-state="reverse">
             <div class="fragment">
               <h1><span class="title-left">SMACSS<br>Your</span> <span class="title-right">Up</span></h1>
@@ -170,6 +169,7 @@
           </section>
 
           <section data-background="img/snook.jpg" data-state="reverse">
+            <br><br><br><br><br><br><br><br><br><br><br><h3>Jonathan Snook</h3>
             <aside class="notes">It was created by Jonathan Snook of Shopify. The SMACSS core goals are to increase the semantic value of a section of HTML and content while decreasing the expectation of a specific HTML structure [next]</aside>
           </section>
 
@@ -188,7 +188,7 @@
         <section>
           <section data-background="img/categories.jpg" data-state="reverse">
             <h2>Categorization</h2>
-            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories:</aside>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5 categories:</aside>
           </section>
 
           <section>
@@ -199,7 +199,7 @@
               <li class="fragment">states</li>
               <li class="fragment">themes</li>
             </ul>
-            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5* categories: Base, layout, modules, states &amp; themes.  Each category comes with a set of more or less loosely defined naming conventions and usage rules. [next]</aside>
+            <aside class="notes">The basic concept of SMACSS is to categorize styles into 5 categories: Base, layout, modules, states &amp; themes.  Each category comes with a set of more or less loosely defined naming conventions and usage rules. [next]</aside>
           </section>
 
           <section>
@@ -226,7 +226,7 @@
           </section>
 
           <section>
-            <p class="big center">States<br>module in various states</p>
+            <p class="big center">States<br>module in various states<br>(ex. hover, disabled, collapsed vs expanded)</p>
             <aside class="notes">State rules are ways to describe how our modules or layouts will look when in a particular state. Is it hidden or expanded? Is it active or inactive? How does it look on different devices? I like to add print styles into this category as well.</aside>
           </section>
 
@@ -235,7 +235,7 @@
             <aside class="notes">Theme Rules describe the appearance of modules, i.e., colors, images, etc, by way of visual themes. I’ve never needed to use them, but some context examples might be: user-selected skin for an application, client branding for a hosted site, holiday or seasonal themes.</aside>
           </section>
 
-          <section data-background="img/hische-theme.jpg" data-state="reverse"></section>
+          <section data-background="img/hische-theme.jpg"></section>
         </section>
 
         <!-- 5. naming conventions -->
@@ -266,8 +266,8 @@
           </section>
 
           <section>
-            <p class="big center">Sub-module<br>.&lt;name&gt;-&lt;state&gt;</p>
-            <aside class="notes"></aside>
+            <p class="big center">Sub-module<br>.&lt;name&gt;-&lt;sub-class&gt;</p>
+            <aside class="notes">With sub-classing the module, both the base module and the sub- module class names get applied to the HTML element.</aside>
           </section>
 
           <section>
@@ -330,24 +330,36 @@
 
           <section>
             <p class="big center">naming conventions<br>class selectors<br>child selectors</p>
-            <aside class="notes">Use child selectors — to limit the scope of selectors to direct descendants instead of all descendants
-            Use class selectors — to reduce the need for descendant selectors of any kind
-            Use naming conventions — for more for readable code</aside>
+            <aside class="notes">reduce Depth of Applicability by using:<br>
+            Use naming conventions — for more for readable code<br>
+            Use class selectors — to reduce the need for descendant selectors of any kind<br>
+            Use child selectors — to limit the scope of selectors to direct descendants instead of all descendants</aside>
           </section>
           
           <section>
-            <h2>Recap</h2>
+            <h2>SMACSS Recap</h2>
           </section>
 
           <section>
             <p class="big center">categorize css rules<br>meaningful names<br>shallow selectors</p>
             <aside class="notes">To recap what SMACSS is:</aside>
           </section>
+          <section data-background="img/resource-smacss.jpg" data-state="reverse">
+            <br/><br/><br/>
+            <h3>Scalable and Modular Architecture for CSS</h3>
+            <a href="http://smacss.com">&#10045; smacss.com</a>
+            <aside class="notes"></aside>
+          </section>
         </section>
 
         <!-- 7. let's get sassy -->
         <section>
-          <section data-background="gifs/sassy-girl.gif" data-state="reverse"></section>
+          <section data-background="gifs/sassy-girl.gif" data-state="reverse">
+            <div style="float:right;">
+              <h3>Add some</h3>
+              <img src="img/logo-sass-white.png" width="300" />
+            </div>
+          </section>
         </section>
 
         <!-- 8. namespacing -->
@@ -358,6 +370,8 @@
           </section>
 
           <section data-background="img/ampersand.jpg" data-state="reverse">
+            <br/><br/><br/><br/><br/><br/>
+            <h3>The Almighty Ampersand</h3>
             <aside class="notes">The ampersand operator is essential in streamlining namespacing in Sass. Basically the ampersand is a way to merge selectors. [next]</aside>
           </section>
 
@@ -375,7 +389,7 @@
 
           <section data-state="full-code reverse">
             <pre><code>.btn {
-    form & {…}
+  form & {…}
 }</code></pre>
             <aside class="notes"></aside>
           </section>
@@ -392,8 +406,8 @@
 
           <section data-state="full-code reverse">
             <pre><code>.btn {
-    &-secondary {…}
-    &_secondary {…}
+  &-secondary {…}
+  &_secondary {…}
 }</code></pre>
             <aside class="notes">Now you can nest your submodules in your main module… [next]</aside>
           </section>
@@ -419,9 +433,9 @@
 
           <section data-state="full-code reverse">
             <pre><code>.btn {
-    &-secondary {
-        &-icon {…}
-    }
+  &-secondary {
+    &-icon {…}
+  }
 }</code></pre>
             <aside class="notes">But which the recent changes in how the ampersand gets parsed, you can nest as much as you please and not have to worry too much about deep selector chains. [next]</aside>
           </section>
@@ -468,14 +482,14 @@
           </section>
 
           <section>
-            <p class="big center">don’t @extend between modules</p>
+            <p class="big center">don’t @extend<br>between modules</p>
             <aside class="notes">Like many things with Sass, don’t overdo it. Limit your extends to inside individual modules, otherwise they’ll become overly dependent on either, which limits their portability. [pause] [next]</aside>
           </section>
         </section>
 
         <!-- 11. file structure -->
         <section>
-          <section data-background="img/file-structure.jpg" data-state="reverse">
+          <section data-background="img/file-structure-2.jpg">
             <h2>File Structure</h2>
             <aside class="notes">In Sass you can easily chop your stylesheet into partials by using the @import rule. This allows us to easily organize and maintain our files similar like this: [next]</aside>
           </section>
@@ -606,7 +620,7 @@ http://csswizardry.com/2013/04/shame-css/</aside>
           <section data-background="img/grey-prism.png">
             <br/><br/><br/>
             <h3>Sassy Starter</h3>
-            <a href="#">&#10148; minamarkham.github.io/sassy-starter</a>
+            <a href="http://minamarkham.github.io/sassy-starter">&#10045; minamarkham.github.io/sassy-starter</a>
             <aside class="notes">I’ve shared my Sass boilerplate on GitHub for you to peruse and use at your pleasure. [pause] [next]</aside>
           </section>
         </section>
@@ -631,13 +645,26 @@ http://csswizardry.com/2013/04/shame-css/</aside>
           </section>
 
           <section data-state="full-code reverse">
-            <pre><code>@include theme($rebeccapurple)</code></pre>
+            <pre><code style="margin: 0 -100px;">.btn {
+  background: #ff3377;
+  @include theme($rebeccapurple){
+    background: #663399;
+  }
+}</code></pre>
             <aside class="notes">Lastly, include the mixin with the defined variable in your module. </aside>
           </section>
 
           <section>
-            <p class="big center">*Disclaimer</p>
-            <aside class="notes">This doesn’t quite work as I’d like to to yet, as it still outputs the default styles as well. </aside>
+            <p class="big center">*Gotcha</p>
+            <aside class="notes">This doesn’t quite work as I’d like to to yet, as it still outputs the default styles as well.</aside>
+          </section>
+
+          <section data-state="full-code reverse">
+            <pre><code>.btn {
+  background: #ff3377;
+  background: #663399;
+}</code></pre>
+            <aside class="notes">So you're overriding styles. Depending on how much reskinning you're doing, this may be okay. The benefits of keeping all the code in the module is worth it to me.</aside>
           </section>
 
         </section>
@@ -668,7 +695,7 @@ http://csswizardry.com/2013/04/shame-css/</aside>
           </section>
           <section>
             <img src="img/smacss-menu.jpg">
-            <p>mina.so/smacss-menu</p>
+            <p><a href="http://mina.so/smacss-menu">&#10045; mina.so/smacss-menu</a></p>
             <aside class="notes">Remember that awful code before? To see the before and after refactoring, visit this url. [next]</aside>
           </section>
           <section>
@@ -678,16 +705,16 @@ http://csswizardry.com/2013/04/shame-css/</aside>
         </section>
 
         <!-- 14. recap -->
-        <section>
+<!--         <section>
           <section>
             <h2>Recap</h2>
             <aside class="notes"></aside>
           </section>
           <section>
-            <p class="big center">namespace with ampersands &amp; @extends<br>break modules into partials<br>refactor in chunks</p>
+            <p class="big center">namespace with &amp;, @extends<br>break modules into partials<br>refactor in chunks</p>
             <aside class="notes">[read slide] [next]</aside>
           </section>
-        </section>
+        </section> -->
 
         <!-- 15. resources and tools -->
 <!--         <section>
@@ -699,61 +726,55 @@ http://csswizardry.com/2013/04/shame-css/</aside>
           <section data-background="img/resource-sass.jpg">
             <br/><br/><br/>
             <h3>Official Sass Site</h3>
-            <a href="http://sass-lang.com/">&#10148; sass-lang.com/</a>
-            <aside class="notes"></aside>
-          </section>
-          <section data-background="img/resource-smacss.jpg" data-state="reverse">
-            <br/><br/><br/>
-            <h3>SMACSS</h3>
-            <a href="http://smacss.com">&#10148; smacss.com</a>
+            <a href="http://sass-lang.com/">&#10163; sass-lang.com/</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/tools-sassmeister.png">
             <br/><br/><br/>
             <h3>Sassmeister</h3>
-            <a href="http://sassmeister.com">&#10148; sassmeister.com</a>
+            <a href="http://sassmeister.com">&#10163; sassmeister.com</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/library-bourbon.jpg" data-state="reverse">
             <br/><br/><br/>
             <h3>Bourbon</h3>
-            <a href="http://bourbon.io/">&#10148; bourbon.io/</a>
+            <a href="http://bourbon.io/">&#10163; bourbon.io/</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/library-compass.jpg" data-state="reverse">
             <br/><br/><br/>
             <h3>Compass</h3>
-            <a href="http://compass-style.org">&#10148; compass-style.org</a>
+            <a href="http://compass-style.org">&#10163; compass-style.org</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/library-director.png">
             <br/><br/><br/>
             <h3>Sass Director</h3>
-            <a href="http://sassdirector.com">&#10148; sassdirector.com</a>
+            <a href="http://sassdirector.com">&#10163; sassdirector.com</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/library-sache.jpg">
             <br/><br/><br/>
             <h3>Sache</h3>
-            <a href="http://sache.in/">&#10148; sache.in</a>
+            <a href="http://sache.in/">&#10163; sache.in</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/library-susy.jpg" >
             <br/><br/><br/>
             <h3>Susy</h3>
-            <a href="http://susy.oddbird.net">&#10148; susy.oddbird.net</a>
+            <a href="http://susy.oddbird.net">&#10163; susy.oddbird.net</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/tools-sublime.png" data-state="reverse">
             <br/><br/><br/>
             <h3>ColorHighlighter</h3>
-            <a href="https://packagecontrol.io/packages/Color%20Highlighter">&#10148; packagecontrol.io/packages/Color Highlighter</a>
+            <a href="https://packagecontrol.io/packages/Color%20Highlighter">&#10163; packagecontrol.io/packages/Color Highlighter</a>
             <aside class="notes"></aside>
           </section>
           <section data-background="img/resource-sassdocs.jpg" data-state="reverse">
             <br/><br/><br/>
             <h3>SassDoc</h3>
-            <a href="http://sassdoc.com/">&#10148; http://sassdoc.com/</a>
+            <a href="http://sassdoc.com/">&#10163; http://sassdoc.com/</a>
             <aside class="notes"></aside>
           </section>
         </section> -->
@@ -764,9 +785,18 @@ http://csswizardry.com/2013/04/shame-css/</aside>
             <h2>Wrap Up</h2>
           </section>
 
-          <section data-background="img/elyse-derp.jpg" data-state="reverse">
+<!--           <section data-background="img/elyse-derp.jpg" data-state="reverse">
             <p class="big center"><br><br><br>(We) have no idea<br>what (we’re) doing</p>
             <aside class="notes">Because as Elyse said, I have no idea what I’m doing. BTW: my tiger is JavaScript. So if you can help holla at your girl. [next]</aside>
+          </section> -->
+
+          <section>
+            <ul class="big">
+              <li>namespace with &amp;, @extends</li>
+              <li>break modules into partials</li>
+              <li>refactor in chunks</li>
+            </ul>
+            <aside class="notes">[read slide] [next]</aside>
           </section>
 
           <section data-background="gifs/mmm-cupcakes.gif" data-state="reverse"></section>
@@ -774,6 +804,7 @@ http://csswizardry.com/2013/04/shame-css/</aside>
           <section data-background="gifs/kaylee-umbrella.gif" data-state="reverse">
             <br><br>
             <h3>Thank you!</h3>
+            <a href="http://minamarkham.github.io/smacss-sass-up">&#10045; minamarkham.github.io/smacss-sass-up</a>
             <aside class="notes">Here are the slides. Thanks for listening!</aside>
           </section>
         </section>
@@ -794,8 +825,8 @@ http://csswizardry.com/2013/04/shame-css/</aside>
     <script>
 
       // Set "Temporary" Event Info
-      var eventName = "#ConvergeSE";
-      var eventDate = "April 16, 2015";
+      var eventName = "#FluentConf";
+      var eventDate = "April 21, 2015";
       var hashTag   = null; // "#FrontPorchIO";
       var sponsor   = null; // 'IBM Design';
       var wifi_name = null; // 'LeWifi';
